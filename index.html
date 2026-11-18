@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f3366">
+  <meta name="description" content="Portfolio of Anye Dalington Nji, a Level 4 Cyber Security student at ICT University in Yaounde, Cameroon.">
+  <title>Anye Dalington Nji | Cyber Security Student</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #0f3366;
+      --navy-deep: #09264b;
+      --blue: #3974bd;
+      --sky: #dceeff;
+      --sky-pale: #f2f8ff;
+      --ink: #172a3d;
+      --muted: #587087;
+      --line: #d5e1eb;
+      --white: #fff;
+      --lime: #d9ef9c;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Segoe UI", sans-serif;
+      --content: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font: 16px/1.65 var(--sans);
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #d39226; outline-offset: 4px; }
+    .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .topbar { background: var(--navy-deep); color: #fff; }
+    .topbar-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .wordmark { font-weight: 700; text-decoration: none; letter-spacing: .02em; }
+    .wordmark span { color: #a9d2fa; }
+    nav { display: flex; flex-wrap: wrap; gap: 22px; }
+    nav a { color: #dcecff; font-size: .88rem; text-decoration: none; }
+    nav a:hover { color: var(--lime); }
+
+    .hero {
+      overflow: hidden;
+      position: relative;
+      background: var(--sky-pale);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before {
+      position: absolute;
+      content: "";
+      width: 430px;
+      height: 430px;
+      right: -180px;
+      top: -220px;
+      border: 1px solid #c5def5;
+      border-radius: 50%;
+      box-shadow: 0 0 0 34px rgba(197, 222, 245, .24), 0 0 0 68px rgba(197, 222, 245, .16);
+      pointer-events: none;
+    }
+    .hero-inner {
+      min-height: 540px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      align-items: center;
+      gap: clamp(42px, 8vw, 110px);
+      padding-block: 74px;
+      position: relative;
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin-top: 0; }
+    h1 {
+      max-width: 720px;
+      margin-bottom: 14px;
+      color: var(--navy-deep);
+      font: 500 clamp(3rem, 7vw, 5.2rem)/.99 var(--serif);
+      letter-spacing: 0;
+    }
+    .hero-title { margin: 0; color: var(--navy); font-size: 1.15rem; font-weight: 700; }
+    .hero-copy { max-width: 550px; margin: 19px 0 28px; color: var(--muted); font-size: 1.05rem; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 17px;
+      border: 1px solid var(--navy);
+      border-radius: 4px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: .92rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .button:hover { background: var(--navy-deep); transform: translateY(-2px); }
+    .button.secondary { background: transparent; color: var(--navy); }
+    .button.secondary:hover { background: var(--sky); }
+    .button.disabled { border-color: #b6c4d1; background: #e7edf2; color: #506477; cursor: not-allowed; }
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #b7d3ed;
+      background: linear-gradient(145deg, #cce5fb 0%, #e8f4ff 62%, #dceeff 100%);
+      box-shadow: 13px 13px 0 var(--navy);
+    }
+    .portrait::before, .portrait::after {
+      position: absolute;
+      content: "";
+      width: 210px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(15, 51, 102, .16);
+      border-radius: 50%;
+    }
+    .portrait::before { transform: translate(-45px, -38px); }
+    .portrait::after { transform: translate(60px, 76px); }
+    .portrait-placeholder { z-index: 1; text-align: center; color: var(--navy); }
+    .initials { display: block; font: 500 4.6rem/1 var(--serif); }
+    .photo-note { display: block; max-width: 190px; margin: 14px auto 0; font-size: .77rem; line-height: 1.45; }
+    .portrait img {
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      object-fit: cover;
+    }
+
+    .section { padding-block: 82px; scroll-margin-top: 18px; }
+    .section.tinted { background: var(--sky-pale); border-block: 1px solid var(--line); }
+    .section-head { max-width: 650px; margin-bottom: 36px; }
+    .section-kicker { margin: 0 0 8px; color: var(--blue); font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin-bottom: 12px; color: var(--navy-deep); font: 500 clamp(2.1rem, 4vw, 3rem)/1.12 var(--serif); }
+    .section-intro { margin: 0; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .about-grid p { margin: 0 0 16px; }
+    .facts { margin: 0; border-top: 1px solid var(--line); }
+    .fact { display: grid; grid-template-columns: 135px 1fr; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .fact dt { color: var(--muted); font-size: .9rem; }
+    .fact dd { margin: 0; font-weight: 650; }
+
+    .project-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      padding: 25px 23px 22px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+    .project-number { margin-bottom: 22px; color: var(--blue); font: 500 1.35rem var(--serif); }
+    .project h3 { margin-bottom: 10px; color: var(--navy-deep); font: 500 1.38rem/1.25 var(--serif); }
+    .project p { margin: 0 0 18px; color: var(--muted); font-size: .94rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 4px; }
+    .tag { padding: 3px 8px; background: var(--sky); color: var(--navy); font-size: .76rem; font-weight: 700; }
+    .repo-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; color: var(--navy); font-size: .87rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .repo-missing { margin-top: 18px; color: var(--muted); font-size: .84rem; }
+
+    .skills-layout { display: grid; grid-template-columns: 1.05fr .95fr; gap: 72px; }
+    .skill-group + .skill-group { margin-top: 28px; }
+    .skill-group h3 { margin-bottom: 15px; color: var(--navy); font: 700 .94rem var(--sans); }
+    .meter { margin: 0 0 15px; }
+    .meter-label { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 6px; font-size: .9rem; }
+    .meter-label span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .track { height: 7px; overflow: hidden; background: #e1eaf2; }
+    .fill { height: 100%; background: var(--blue); }
+    .chip-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { padding: 6px 10px; border: 1px solid #c7d7e5; color: var(--navy); font-size: .86rem; }
+    .systems { margin-top: 26px; }
+    .cert-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .cert-list li { position: relative; padding: 17px 0 17px 25px; border-bottom: 1px solid var(--line); }
+    .cert-list li::before { position: absolute; left: 2px; top: 21px; width: 8px; height: 8px; background: var(--blue); content: ""; transform: rotate(45deg); }
+    .cert-list span { display: block; color: var(--muted); font-size: .88rem; }
+
+    .contact-band { background: var(--navy-deep); color: #fff; }
+    .contact-band h2 { color: #fff; }
+    .contact-band .section-kicker { color: #a9d2fa; }
+    .contact-band .section-intro { color: #d2e3f2; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 36px; }
+    .contact-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+    .contact-links a { width: fit-content; color: #fff; text-decoration-color: #80b4e8; text-underline-offset: 4px; }
+    .contact-links span { display: block; color: #a9c2da; font-size: .77rem; }
+    .contact-actions { display: flex; justify-content: flex-end; }
+    .contact-actions .button { border-color: #b9d8f6; background: #b9d8f6; color: var(--navy-deep); }
+    .contact-actions .button:hover { background: #d6eaff; }
+    .contact-actions .button.disabled { border-color: #8096ad; background: #334d69; color: #e2eaf1; }
+    footer { padding-block: 20px; background: #071d38; color: #b6cbde; font-size: .82rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 14px; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, var(--content)); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding-block: 15px; gap: 9px; }
+      nav { gap: 8px 17px; }
+      nav a { font-size: .82rem; }
+      .hero-inner { min-height: 0; grid-template-columns: minmax(0, 1fr) 210px; gap: 32px; padding-block: 58px; }
+      .portrait { box-shadow: 8px 8px 0 var(--navy); }
+      .initials { font-size: 3.4rem; }
+      .photo-note { max-width: 150px; font-size: .7rem; }
+      .section { padding-block: 64px; }
+      .about-grid, .skills-layout { grid-template-columns: 1fr; gap: 34px; }
+      .project-list { grid-template-columns: 1fr; }
+      .project { min-height: 0; }
+      .project-number { margin-bottom: 13px; }
+      .contact-grid { grid-template-columns: 1fr; align-items: start; }
+      .contact-actions { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 34px; }
+      .hero-copy { font-size: 1rem; }
+      .portrait { width: min(68%, 240px); justify-self: center; }
+      .fact { grid-template-columns: 105px 1fr; gap: 12px; }
+      .contact-links { grid-template-columns: 1fr; }
+      footer .wrap { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="wordmark" href="#home">Anye Dalington <span>Nji</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="intro-title">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">Cyber Security · Yaounde, Cameroon</p>
+          <h1 id="intro-title">Anye<br>Dalington Nji</h1>
+          <p class="hero-title">Cyber Security Student</p>
+          <p class="hero-copy">Level 4 Cyber Security student with a foundation in programming, databases and operating systems. Eager to learn, follow procedures carefully and help protect systems and data.</p>
+          <div class="actions">
+            <a class="button" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="mailto:dalingtonaanye11@gmail.com">Get in touch</a>
+          </div>
+        </div>
+        <div class="portrait" aria-label="Portrait photo placeholder">
+          <div class="portrait-placeholder">
+            <span class="initials" aria-hidden="true">AN</span>
+            <span class="photo-note">Add your professional photo as <strong>assets/profile-photo.jpg</strong></span>
+          </div>
+          <img src="assets/profile-photo.jpg.jpeg" alt="Portrait of Anye Dalington Nji" onerror="this.remove()">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">A little about me</p>
+          <h2 id="about-title">Learning to make systems safer.</h2>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p>I am studying for a Bachelor's degree in Cyber Security at ICT University in Yaounde, where I am currently in Level 4. My studies have given me a foundation in programming, databases and operating systems.</p>
+            <p>I am seeking a three-month internship in the Security Systems Department at Flux Cameroon, starting 23 November 2026. I bring teamwork, leadership and resilience, along with a willingness to learn and follow procedures carefully.</p>
+          </div>
+          <dl class="facts">
+            <div class="fact"><dt>Education</dt><dd>Bachelor's in Cyber Security<br>ICT University, 2024–2027</dd></div>
+            <div class="fact"><dt>Earlier education</dt><dd>A Level, Shakespeare Bilingual College<br>O Level, MK2 International College</dd></div>
+            <div class="fact"><dt>Languages</dt><dd>English (native), French (native), Spanish (basic)</dd></div>
+            <div class="fact"><dt>Strengths</dt><dd>Teamwork, leadership, resilience</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Selected work</p>
+          <h2 id="projects-title">Projects</h2>
+          <p class="section-intro">A selection of projects applying programming and technology to practical ideas.</p>
+        </div>
+        <div class="project-list">
+          <article class="project">
+            <span class="project-number">01</span>
+            <h3>Encryption and Decryption Cipher</h3>
+            <p>A C++ cipher that encrypts and decrypts messages, applying cyber security concepts in code.</p>
+            <div class="tags"><span class="tag">C++</span><span class="tag">Cryptography</span></div>
+            <span class="repo-missing">GitHub repository link to add</span>
+          </article>
+          <article class="project">
+            <span class="project-number">02</span>
+            <h3>Facial Recognition Video Game</h3>
+            <p>A Python video game that uses live facial recognition to respond to the player in real time.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Facial recognition</span></div>
+            <span class="repo-missing">GitHub repository link to add</span>
+          </article>
+          <article class="project">
+            <span class="project-number">03</span>
+            <h3>Peer-to-Peer Tutoring App</h3>
+            <p>An app where students tutor each other, with a Flutter front end and Node.js back end.</p>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span></div>
+            <span class="repo-missing">GitHub repository link to add</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Technical toolkit</p>
+          <h2 id="skills-title">Skills</h2>
+        </div>
+        <div class="skills-layout">
+          <div>
+            <div class="skill-group">
+              <h3>Cyber security</h3>
+              <div class="meter"><div class="meter-label"><span>Penetration Testing</span><span>75%</span></div><div class="track" role="meter" aria-label="Penetration Testing" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="fill" style="width:75%"></div></div></div>
+              <div class="meter"><div class="meter-label"><span>Vulnerability Assessment</span><span>80%</span></div><div class="track" role="meter" aria-label="Vulnerability Assessment" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="fill" style="width:80%"></div></div></div>
+              <div class="meter"><div class="meter-label"><span>OWASP Shop Experience</span><span>50%</span></div><div class="track" role="meter" aria-label="OWASP Shop Experience" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="fill" style="width:50%"></div></div></div>
+              <div class="meter"><div class="meter-label"><span>Web Application Security</span><span>60%</span></div><div class="track" role="meter" aria-label="Web Application Security" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><div class="fill" style="width:60%"></div></div></div>
+            </div>
+            <div class="skill-group">
+              <h3>Programming</h3>
+              <div class="chip-list"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">Flutter</span><span class="chip">Node.js</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group">
+              <h3>Systems</h3>
+              <div class="chip-list"><span class="chip">Linux</span><span class="chip">Ubuntu</span><span class="chip">Windows</span></div>
+            </div>
+            <div class="skill-group systems">
+              <h3>Other</h3>
+              <div class="chip-list"><span class="chip">Databases</span><span class="chip">Microsoft Word</span><span class="chip">Excel</span><span class="chip">PowerPoint</span><span class="chip">Publisher</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="certificates" aria-labelledby="certificates-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Courses and credentials</p>
+          <h2 id="certificates-title">Certificates</h2>
+        </div>
+        <ul class="cert-list">
+          <li>Databases <span>Coursera</span></li>
+          <li>Operating Systems <span>Coursera</span></li>
+          <li>Fundamentals of Microsoft Word, Excel, PowerPoint and Publisher <span>Microsoft, 2020</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section contact-band" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="section-kicker">Start a conversation</p>
+          <h2 id="contact-title">Let's connect.</h2>
+          <p class="section-intro">Available for a three-month internship starting 23 November 2026.</p>
+        </div>
+        <div>
+          <div class="contact-links">
+            <a href="mailto:dalingtonaanye11@gmail.com"><span>Email</span>dalingtonaanye11@gmail.com</a>
+            <a href="tel:+237679419211"><span>Phone</span>+237 679 419 211</a>
+            <a href="https://github.com/DalingtonChris" target="_blank" rel="noreferrer"><span>GitHub</span>github.com/DalingtonChris</a>
+          </div>
+          <div class="contact-actions" style="margin-top:24px">
+            <a class="button" href="CV.pdf" download>Download my CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>Anye Dalington Nji · Cyber Security Student</span><span>Yaounde, Cameroon</span></div></footer>
+</body>
+</html>
